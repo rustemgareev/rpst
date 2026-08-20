@@ -149,7 +149,7 @@ class AccentuatorWrapper(object):
             config_filepath = os.path.join(model_name_or_path, 'config.json')
             model_filepath = os.path.join(model_name_or_path, 'pytorch_model.pth')
 
-        with open(config_filepath, 'r') as f:
+        with open(config_filepath, 'r', encoding='utf-8') as f:
             self.config = json.load(f)
 
         self.vectorizer = Vectorizer.from_pretrained(self.config)
@@ -193,7 +193,7 @@ class AccentuatorWrapperWithDictionary(AccentuatorWrapper):
         else:
             dict_filepath = os.path.join(model_name_or_path, 'accents.pkl')
 
-        with open(dict_filepath, 'rb') as f:
+        with open(dict_filepath, 'rb', encoding='utf-8') as f:
             self.ambiguous_accents = pickle.load(f)
             self.ambiguous_accents2 = pickle.load(f)
             self.word_accents_dict = pickle.load(f)

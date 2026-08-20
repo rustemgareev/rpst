@@ -87,7 +87,7 @@ class Accents:
 
     def load(self, data_dir, all_words):
         # Рифмовник для нечеткой рифмы
-        with open(os.path.join(data_dir, 'rifmovnik.small.upgraded.json'), 'r') as f:
+        with open(os.path.join(data_dir, 'rifmovnik.small.upgraded.json'), 'r', encoding='utf-8') as f:
             rhyming_data = json.load(f)
             self.rhyming_dict = dict((key, values) for key, values in rhyming_data['dictionary'].items() if len(values) > 0)
 
@@ -101,13 +101,13 @@ class Accents:
                     word2 = s[i+1:].strip()
                     self.rhymed_words.add((word1, word2))
 
-        with open(os.path.join(data_dir, 'prefix_derivation.json')) as f:
+        with open(os.path.join(data_dir, 'prefix_derivation.json'), 'r', encoding='utf-8') as f:
             self.derivation_data = json.load(f)
 
         self.yo_words = dict()
 
         # импорт однозначной ёфикации
-        # with open(os.path.join(data_dir, 'yo_3.json'), 'r') as f:
+        # with open(os.path.join(data_dir, 'yo_3.json'), 'r', encoding='utf-8') as f:
         #     data = json.load(f)
         #     for word, yo in data.items():
         #         self.yo_words[word] = yo.lower()
@@ -134,7 +134,7 @@ class Accents:
 
         # словарь для разрешения случаев ёфикации, зависящей от грамматической формы слова.
         path = os.path.join(data_dir, 'yo_by_gram.json')
-        with open(path, 'r') as f:
+        with open(path, 'r', encoding='utf-8') as f:
             self.yo_dict = json.load(f)
 
         # Информация о словах, которые для разных грамматических форм могут давать разное ударение.
@@ -340,7 +340,7 @@ class Accents:
         logging.info('%d items in word_accents_dict', len(self.word_accents_dict))
 
     def save_pickle(self, path):
-        with open(path, 'wb') as f:
+        with open(path, 'wb', encoding='utf-8') as f:
             pickle.dump(self.ambiguous_accents, f)
             pickle.dump(self.ambiguous_accents2, f)
             pickle.dump(self.word_accents_dict, f)
@@ -352,7 +352,7 @@ class Accents:
             pickle.dump(self.derivation_data, f)
 
     def load_pickle(self, path):
-        with open(path, 'rb') as f:
+        with open(path, 'rb', encoding='utf-8') as f:
             self.ambiguous_accents = pickle.load(f)
             self.ambiguous_accents2 = pickle.load(f)
             self.word_accents_dict = pickle.load(f)

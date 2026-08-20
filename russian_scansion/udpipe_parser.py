@@ -88,7 +88,7 @@ class UdpipeParser:
         self.pipeline = Pipeline(self.model, 'tokenize', Pipeline.DEFAULT, Pipeline.DEFAULT, 'conllu')
         self.error = ProcessingError()
 
-        with open(os.path.join(model_dir, 'word2lemma.pkl'), 'rb') as f:
+        with open(os.path.join(model_dir, 'word2lemma.pkl'), 'rb', encoding='utf-8') as f:
             self.word2lemma = pickle.load(f)
             #self.word2posx = pickle.load(f)
 

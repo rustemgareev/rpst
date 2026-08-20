@@ -1748,7 +1748,7 @@ class PoetryStressAligner(object):
         self.allow_stress_guessing_for_oov = False
         self.allow_fuzzy_rhyming = True
 
-        with open(os.path.join(model_dir, 'scansion_tool.pkl'), 'rb') as f:
+        with open(os.path.join(model_dir, 'scansion_tool.pkl'), 'rb', encoding='utf-8') as f:
             self.collocations = CustomUnpickler(f).load()
             self.word_segmentation = CustomUnpickler(f).load()
 
@@ -1775,7 +1775,7 @@ class PoetryStressAligner(object):
                 segments = fields[1].split('/')
                 word_segmentation[word] = WordSegmentation(segments)
 
-        with open(os.path.join(output_dir, 'scansion_tool.pkl'), 'wb') as f:
+        with open(os.path.join(output_dir, 'scansion_tool.pkl'), 'wb', encoding='utf-8') as f:
             pickle.dump(collocations, f)
             pickle.dump(word_segmentation, f)
 
@@ -4943,7 +4943,7 @@ if __name__ == '__main__':
     #         segments = fields[1].split('/')
     #         word_segmentation[word] = WordSegmentation(segments)
     #
-    # with open(os.path.join(output_dir, 'scansion_tool.pkl'), 'wb') as f:
+    # with open(os.path.join(output_dir, 'scansion_tool.pkl'), 'wb', encoding='utf-8') as f:
     #     pickle.dump(collocations, f)
     #     pickle.dump(word_segmentation, f)
 

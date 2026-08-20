@@ -193,7 +193,7 @@ class AccentuatorWrapperWithDictionary(AccentuatorWrapper):
         else:
             dict_filepath = os.path.join(model_name_or_path, 'accents.pkl')
 
-        with open(dict_filepath, 'rb', encoding='utf-8') as f:
+        with open(dict_filepath, 'rb') as f:
             self.ambiguous_accents = pickle.load(f)
             self.ambiguous_accents2 = pickle.load(f)
             self.word_accents_dict = pickle.load(f)

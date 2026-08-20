@@ -340,7 +340,7 @@ class Accents:
         logging.info('%d items in word_accents_dict', len(self.word_accents_dict))
 
     def save_pickle(self, path):
-        with open(path, 'wb', encoding='utf-8') as f:
+        with open(path, 'wb') as f:
             pickle.dump(self.ambiguous_accents, f)
             pickle.dump(self.ambiguous_accents2, f)
             pickle.dump(self.word_accents_dict, f)
@@ -352,7 +352,7 @@ class Accents:
             pickle.dump(self.derivation_data, f)
 
     def load_pickle(self, path):
-        with open(path, 'rb', encoding='utf-8') as f:
+        with open(path, 'rb') as f:
             self.ambiguous_accents = pickle.load(f)
             self.ambiguous_accents2 = pickle.load(f)
             self.word_accents_dict = pickle.load(f)
